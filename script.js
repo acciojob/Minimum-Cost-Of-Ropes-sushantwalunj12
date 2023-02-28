@@ -1,47 +1,38 @@
-let formEle = document.getElementById('form');
-formEle.addEventListener('submit' , ropes);
-function ropes(event){
-	event.preventDefault();
+function calculateMinCost() {
+  var inp=document.getElementById("rope-lengths");
 
-	const input = document.getElementById('form').elements[0].value;
+      let inp_val=inp.value;
+      let a=inp_val.split(",");
+  
+      let numeric_array=[];
+      for(let i=0;i<a.length;i++)
+      {
+          numeric_array.push(parseInt(a[i]));
+          
+      }
+  
+  
+      function compareNumbers(a,b)
+      {
+          return a - b;
+      }
+  
+      numeric_array.sort(compareNumbers); 
+      
+      var len=numeric_array.length;
+      var sum=0;
+      while(numeric_array.length>1)
+      {
+          const first_el=numeric_array.shift();
+          const second_el=numeric_array.shift();
+          sum=sum+first_el+second_el;
+          numeric_array.push(first_el +second_el);
+          
+  
+      let res_div=document.getElementById("result");
+      res_div.innerHTML=sum;
+      
 
-   const arr = input.split(",");
-   console.log(arr);
+  
 
-   for(let i=0; i<arr.length; i++){
-	 arr[i] = parseInt(arr[i]);
-   }
-
-
-   let arrRope = [];
-
-	while(arr.length != 1){ 
-    let add = 0;
-	for(let i=1; i<=2; i++){
-	//find 1st min value
-	let min1 = arr[0];
-	let minIndex = 0;
-	for(let index=1; index<arr.length; index++){
-		if(arr[index] < min1){ 
-			min1 = arr[index];
-			minIndex = index;
-		}
-	}
-    
-	add = add + min1;
-    arr.splice(minIndex,1);
-	}
-
-	arr.push(add);
-
-	arrRope.push(add);
-	}
-	let cost = 0;
-	arrRope.forEach((value) => {
-		cost = cost + value;
-	})
-	console.log(cost);
-
-	document.getElementById('result').innerHTML = cost;
-	console.log("hello");
-}
+}  

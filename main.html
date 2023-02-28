@@ -6,12 +6,14 @@
 </head>
 
 <body>
-    <form id="form" onsubmit="return false">
-      <input type="text" id = "inputArr"/>
-      <input type="submit" value="Submit" onclick="minimumCost()"/>
-    </form>
-    <div id="result">Div Result</div>
-    <script type="text/javascript" src="./script.js"></script>
+    <form id="form">
+        <label for="rope-lengths">Enter rope lengths:</label>
+        <input type="text" id="rope-lengths">
+        <button type="button" onclick="calculateMinCost()">Calculate</button>
+      </form>
+      <div id="result"></div>
+
+<script src="script.js"></script>
 </body>
 
 </html>
